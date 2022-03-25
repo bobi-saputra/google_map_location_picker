@@ -259,9 +259,9 @@ class MapPickerState extends State<MapPicker> {
                           placeId: _placeId,
                         )
                       }
-                      Future.delayed(const Duration(milliseconds: 500), () {});
-                      );
                       
+                      );
+                      Future.delayed(const Duration(milliseconds: 500), () {});
                     },
                     child: widget.resultCardConfirmIcon ??
                         Icon(Icons.arrow_forward),
