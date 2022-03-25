@@ -272,6 +272,25 @@ class MapPickerState extends State<MapPicker> {
 
   Future<Map<String, String?>> getAddress(LatLng? location) async {
     try {
+     final endpoint = "https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${location?.latitude}&lon=${location?.longitude}";
+   
+      final response = jsonDecode((await http.get(Uri.parse(endpoint),
+              headers: await LocationUtils.getAppHeaders()))
+          .body);
+
+      return {
+        "placeId": response['place_id'],
+        "address": response['display_name']
+      };
+    } catch (e) {
+      print(e);
+    }
+
+    return {"placeId": null, "address": null};
+  }
+  /*
+  Future<Map<String, String?>> getAddress(LatLng? location) async {
+    try {
       final endpoint =
           'https://maps.googleapis.com/maps/api/geocode/json?latlng=${location?.latitude},${location?.longitude}'
           '&key=${widget.apiKey}&language=${widget.language}';
@@ -289,7 +308,7 @@ class MapPickerState extends State<MapPicker> {
     }
 
     return {"placeId": null, "address": null};
-  }
+  }*/
 
   Widget pin() {
     return IgnorePointer(
