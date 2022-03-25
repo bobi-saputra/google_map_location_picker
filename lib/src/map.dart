@@ -251,19 +251,17 @@ class MapPickerState extends State<MapPicker> {
                   FloatingActionButton(
                     
                     onPressed: ()async {
-                      SchedulerBinding.instance!.addPostFrameCallback((_) async{
-                         Navigator.of(context).pop(
+                      SchedulerBinding.instance!.addPostFrameCallback((timeStamp) { 
+                      Navigator.of(context).pop(
                         {
                           'location': LocationResult(
                           latLng: locationProvider.lastIdleLocation,
                           address: _address,
                           placeId: _placeId,
                           )
-                        })
-                      }
-                      );
-                     
-
+                        }
+                        )
+                          });
                       Future.delayed(const Duration(milliseconds: 500), () {});
                     },
                     child: widget.resultCardConfirmIcon ??
