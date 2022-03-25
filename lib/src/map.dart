@@ -250,9 +250,9 @@ class MapPickerState extends State<MapPicker> {
                   Spacer(),
                   FloatingActionButton(
                     
-                    onPressed: () {
+                    onPressed: ()async {
                       
-                       Navigator.of(context).maybePop(
+                     await  Navigator.of(context).pop(
                         {
                           'location': LocationResult(
                           latLng: locationProvider.lastIdleLocation,
