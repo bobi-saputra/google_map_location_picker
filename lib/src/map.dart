@@ -251,9 +251,8 @@ class MapPickerState extends State<MapPicker> {
                   FloatingActionButton(
                     
                     onPressed: () {
-                      while(true){
-                      if(Navigator.of(context).canPop()){
-                       Navigator.of(context).pop(
+                      
+                       Navigator.of(context).maybePop(
                         {
                           'location': LocationResult(
                           latLng: locationProvider.lastIdleLocation,
@@ -262,8 +261,8 @@ class MapPickerState extends State<MapPicker> {
                           )
                         }
                         );
-                          break;
-                     }
+                        
+                       Future.delayed(const Duration(milliseconds: 500), () {});
                      
                    }
                       
@@ -280,7 +279,7 @@ class MapPickerState extends State<MapPicker> {
         
                       });*/
                       
-                      Future.delayed(const Duration(milliseconds: 500), () {});
+                     
                     },
                     child: widget.resultCardConfirmIcon ??
                         Icon(Icons.arrow_forward),
