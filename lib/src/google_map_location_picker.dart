@@ -322,35 +322,25 @@ class LocationPickerState extends State<LocationPicker> {
   /// to be the road name and the locality.
   Future reverseGeocodeLatLng(LatLng latLng) async {
     final endpoint = "https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${latLng.latitude}&lon=${latLng.longitude}";
-    print(endpoint);
+   
     final response = await http.get(Uri.parse(endpoint),
         headers: await (LocationUtils.getAppHeaders()));
-
+    String? road="";
+    String? placeId="";
     if (response.statusCode == 200) {
       Map<String, dynamic> responseJson = jsonDecode(response.body);
 
-      String? road;
-
-      String? placeId = responseJson['place_id'];
-
-      if (responseJson['error'] == '400') {
+      road=responseJson['display_name'];
+      placeId= responseJson['place_id'];
+    }else{
         road = 'REQUEST ERROR = please see log for more details';
-        print(responseJson['error']['message']);
-      } else {
-        road =
-            responseJson['display_name'];
-      }
-
-//      String locality =
-//          responseJson['results'][0]['address_components'][1]['short_name'];
-
-      setState(() {
+    }
+    setState(() {
         locationResult = LocationResult();
         locationResult!.address = road;
         locationResult!.latLng = latLng;
         locationResult!.placeId = placeId;
       });
-    }
   }
   /*
   Future reverseGeocodeLatLng(LatLng latLng) async {
