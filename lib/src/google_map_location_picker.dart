@@ -321,10 +321,44 @@ class LocationPickerState extends State<LocationPicker> {
   /// This method gets the human readable name of the location. Mostly appears
   /// to be the road name and the locality.
   Future reverseGeocodeLatLng(LatLng latLng) async {
-    final endpoint =
+    final endpoint = "https://nominatim.openstreetmap.org/reverse?format=geocodejson&lat=${latLng.latitude}&lon=${latLng.longitude}";
+
+    final response = await http.get(Uri.parse(endpoint),
+        headers: await (LocationUtils.getAppHeaders()));
+
+    if (response.statusCode == 200) {
+      Map<String, dynamic> responseJson = jsonDecode(response.body);
+
+      String? road;
+
+      String? placeId = responseJson['place_id'];
+
+      if (responseJson['error'] == '400') {
+        road = 'REQUEST ERROR = please see log for more details';
+        print(responseJson['error']['message']);
+      } else {
+        road =
+            responseJson['display_name'];
+      }
+
+//      String locality =
+//          responseJson['results'][0]['address_components'][1]['short_name'];
+
+      setState(() {
+        locationResult = LocationResult();
+        locationResult!.address = road;
+        locationResult!.latLng = latLng;
+        locationResult!.placeId = placeId;
+      });
+    }
+  }
+  /*
+  Future reverseGeocodeLatLng(LatLng latLng) async {
+    /*final endpoint =
         "https://maps.googleapis.com/maps/api/geocode/json?latlng=${latLng.latitude},${latLng.longitude}" +
             "&key=${widget.apiKey}" +
-            "&language=${widget.language}";
+            "&language=${widget.language}";*/
+    final endpoint = "https://nominatim.openstreetmap.org/reverse?format=geocodejson&lat=${latLng.latitude}&lon=${latLng.longitude}";
 
     final response = await http.get(Uri.parse(endpoint),
         headers: await (LocationUtils.getAppHeaders()));
@@ -354,7 +388,7 @@ class LocationPickerState extends State<LocationPicker> {
         locationResult!.placeId = placeId;
       });
     }
-  }
+  }*/
 
   /// Moves the camera to the provided location and updates other UI features to
   /// match the location.
