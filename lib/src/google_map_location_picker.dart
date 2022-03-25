@@ -330,8 +330,13 @@ class LocationPickerState extends State<LocationPicker> {
     if (response.statusCode == 200) {
       Map<String, dynamic> responseJson = jsonDecode(response.body);
 
-      road=responseJson['display_name'];
-      placeId= responseJson['place_id'];
+      if (responseJson.containsKey("error")) {
+        road = 'REQUEST ERROR = please see log for more details';
+      }else{
+        road=responseJson['display_name'];
+        placeId= responseJson['place_id'];
+      }
+      
     }else{
         road = 'REQUEST ERROR = please see log for more details';
     }
