@@ -322,7 +322,7 @@ class LocationPickerState extends State<LocationPicker> {
   /// to be the road name and the locality.
   Future reverseGeocodeLatLng(LatLng latLng) async {
     final endpoint = "https://nominatim.openstreetmap.org/reverse?format=geocodejson&lat=${latLng.latitude}&lon=${latLng.longitude}";
-
+    print(endpoint);
     final response = await http.get(Uri.parse(endpoint),
         headers: await (LocationUtils.getAppHeaders()));
 
