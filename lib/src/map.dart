@@ -183,8 +183,7 @@ class MapPickerState extends State<MapPicker> {
               _lastMapPosition = position.target;
             },
             onCameraIdle: () async {
-              print("debugggg");
-              print("onCameraIdle#_lastMapPosition = $_lastMapPosition");
+               print("onCameraIdle#_lastMapPosition = $_lastMapPosition");
               LocationProvider.of(context, listen: false)
                   .setLastIdleLocation(_lastMapPosition);
             },
