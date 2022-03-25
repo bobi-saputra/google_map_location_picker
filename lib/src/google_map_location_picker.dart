@@ -336,7 +336,7 @@ class LocationPickerState extends State<LocationPicker> {
         road = 'REQUEST ERROR = please see log for more details';
       }else{
         road=responseJson['display_name'];
-        placeId= responseJson['place_id'];
+        placeId= responseJson['place_id'].toString();
       }
       
     }else{

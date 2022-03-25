@@ -281,7 +281,7 @@ class MapPickerState extends State<MapPicker> {
           .body);
 
       return {
-        "placeId": response['place_id'],
+        "placeId": response['place_id'].toString(),
         "address": response['display_name']
       };
     } catch (e) {
