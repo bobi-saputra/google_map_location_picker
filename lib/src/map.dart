@@ -260,7 +260,7 @@ class MapPickerState extends State<MapPicker> {
                           placeId: _placeId,
                           )
                         }
-                        )
+                        );
         
                       });
                       
