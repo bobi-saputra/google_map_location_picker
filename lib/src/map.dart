@@ -251,7 +251,8 @@ class MapPickerState extends State<MapPicker> {
                   FloatingActionButton(
                     
                     onPressed: () {
-                      Future.delayed(const Duration(milliseconds: 1000), () {
+                      Navigator.of(context).pop();
+                      /*Future.delayed(const Duration(milliseconds: 1000), () {
                         Navigator.of(context).pop(
                         {
                           'location': LocationResult(
@@ -262,7 +263,7 @@ class MapPickerState extends State<MapPicker> {
                         }
                         );
         
-                      });
+                      });*/
                       
                       Future.delayed(const Duration(milliseconds: 500), () {});
                     },
