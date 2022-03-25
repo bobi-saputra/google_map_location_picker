@@ -250,13 +250,18 @@ class MapPickerState extends State<MapPicker> {
                   Spacer(),
                   FloatingActionButton(
                     onPressed: () {
-                      Navigator.of(context).pop({
+                      
+                      Navigator.of(context).maybePop(
+                        {
                         'location': LocationResult(
                           latLng: locationProvider.lastIdleLocation,
                           address: _address,
                           placeId: _placeId,
                         )
-                      });
+                      }
+                      Future.delayed(const Duration(milliseconds: 500), () {});
+                      );
+                      
                     },
                     child: widget.resultCardConfirmIcon ??
                         Icon(Icons.arrow_forward),
