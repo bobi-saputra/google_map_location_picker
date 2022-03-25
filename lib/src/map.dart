@@ -249,9 +249,10 @@ class MapPickerState extends State<MapPicker> {
                   ),
                   Spacer(),
                   FloatingActionButton(
+                    
                     onPressed: ()async {
-                      
-                     await Navigator.of(context).maybePop(
+                      SchedulerBinding.instance.addPostFrameCallback((_) async{
+                        await Navigator.of(context).pop(
                         {
                         'location': LocationResult(
                           latLng: locationProvider.lastIdleLocation,
@@ -259,8 +260,10 @@ class MapPickerState extends State<MapPicker> {
                           placeId: _placeId,
                         )
                       }
-                      
                       );
+                      });
+                     
+
                       Future.delayed(const Duration(milliseconds: 500), () {});
                     },
                     child: widget.resultCardConfirmIcon ??
