@@ -251,7 +251,21 @@ class MapPickerState extends State<MapPicker> {
                   FloatingActionButton(
                     
                     onPressed: () {
-                      Navigator.of(context).popUntil((route) => false);
+                      while(true){
+                      if(Navigator.of(context).canPop()){
+                       Navigator.of(context).pop(
+                        {
+                          'location': LocationResult(
+                          latLng: locationProvider.lastIdleLocation,
+                          address: _address,
+                          placeId: _placeId,
+                          )
+                        }
+                        );
+                          break;
+                     }
+                     
+                   }
                       
                       /*Future.delayed(const Duration(milliseconds: 1000), () {
                         Navigator.of(context).pop(
