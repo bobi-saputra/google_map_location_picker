@@ -272,7 +272,6 @@ class MapPickerState extends State<MapPicker> {
   }
 
   Future<Map<String, String?>> getAddress(LatLng? location) async {
-    print("boyboy");
     try {
      final endpoint = "https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${location?.latitude}&lon=${location?.longitude}";
    
