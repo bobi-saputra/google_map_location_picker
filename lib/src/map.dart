@@ -264,23 +264,8 @@ class MapPickerState extends State<MapPicker> {
                         
                        Future.delayed(const Duration(milliseconds: 500), () {});
                      
-                   }
-                      
-                      /*Future.delayed(const Duration(milliseconds: 1000), () {
-                        Navigator.of(context).pop(
-                        {
-                          'location': LocationResult(
-                          latLng: locationProvider.lastIdleLocation,
-                          address: _address,
-                          placeId: _placeId,
-                          )
-                        }
-                        );
-        
-                      });*/
-                      
-                     
-                    },
+                    }
+                    ,
                     child: widget.resultCardConfirmIcon ??
                         Icon(Icons.arrow_forward),
                   ),
