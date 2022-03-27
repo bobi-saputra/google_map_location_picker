@@ -252,7 +252,7 @@ class MapPickerState extends State<MapPicker> {
                     
                     onPressed: () async{
                        Future.delayed(const Duration(milliseconds: 500), () {});
-                      await Navigator.of(context).maybePop(
+                      await Navigator.of(context,rootNavigator: true).maybePop(
                         {
                           'location': LocationResult(
                           latLng: locationProvider.lastIdleLocation,
