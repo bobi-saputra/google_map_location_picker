@@ -491,6 +491,7 @@ Future<LocationResult?> showLocationPicker(
 }) async {
   final results = await Navigator.of(context).push(
     MaterialPageRoute<dynamic>(
+       settings: RouteSettings(name: "/PickLoc"),
       builder: (BuildContext context) {
         // print('[LocationPicker] [countries] ${countries.join(', ')}');
         return LocationPicker(
