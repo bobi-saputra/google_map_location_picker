@@ -266,7 +266,7 @@ class MapPickerState extends State<MapPicker> {
                           address: _address,
                           placeId: _placeId,
                           );
-                          Navigator.popAndPushNamed(context, "/PickLoc",result: {
+                          Navigator.popAndPushNamed(context, "PickLoc",result: {
                               'location': rest
                               });
                          /* Navigator.popAndPushNamed(context, {
