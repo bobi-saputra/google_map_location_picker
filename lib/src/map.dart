@@ -250,20 +250,27 @@ class MapPickerState extends State<MapPicker> {
                   Spacer(),
                   FloatingActionButton(
                     
-                    onPressed: () {
-                       Future.delayed(const Duration(milliseconds: 500), () {});
-                      Navigator.of(context,rootNavigator: true).popUntil(
-                        ModalRoute.withName("/PickLoc")
-                       /* {
+                    onPressed: () async{
+                     await   Future.delayed(const Duration(milliseconds: 1000), () {});
+                    /*  Navigator.pop(context,
+                      {
                           'location': LocationResult(
                           latLng: locationProvider.lastIdleLocation,
                           address: _address,
                           placeId: _placeId,
                           )
-                        }*/
-                        );
-                        
-                       Future.delayed(const Duration(milliseconds: 500), () {});
+                        }
+                        )*/
+                        Navigator.of(context).pop(
+                          {
+                        'location': LocationResult(
+                          latLng: locationProvider.lastIdleLocation,
+                          address: _address,
+                          placeId: _placeId,
+                          )
+                          }
+                          );
+                      await Future.delayed(const Duration(milliseconds: 500), () {});
                      
                     }
                     ,
