@@ -266,7 +266,8 @@ class MapPickerState extends State<MapPicker> {
                           address: _address,
                           placeId: _placeId,
                           );
-                        await  Future.delayed(Duration.zero,(){
+                          Navigator.pop(context);
+                       /* await  Future.delayed(Duration.zero,(){
                             Navigator.of(context).pop(
                               {
                               'location': rest
@@ -275,7 +276,7 @@ class MapPickerState extends State<MapPicker> {
                             //Navigator.of(context).popUntil((route) => route.isFirst);
                           }
                           );
-                        
+                        */
                      // await Future.delayed(const Duration(milliseconds: 500), () {});
                      
                     }
