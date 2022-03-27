@@ -251,7 +251,7 @@ class MapPickerState extends State<MapPicker> {
                   FloatingActionButton(
                     
                     onPressed: () async{
-                        Future.delayed(const Duration(milliseconds: 1000), () {});
+                       // Future.delayed(const Duration(milliseconds: 1000), () {});
                     /*  Navigator.pop(context,
                       {
                           'location': LocationResult(
@@ -266,12 +266,16 @@ class MapPickerState extends State<MapPicker> {
                           address: _address,
                           placeId: _placeId,
                           );
-                        Navigator.of(context).pop(
-                          {
-                          'location': rest
+                        await  Future.delayed(Duration.zero,(){
+                            Navigator.of(context).pop(
+                              {
+                              'location': rest
+                              }
+                            );
                           }
                           );
-                      await Future.delayed(const Duration(milliseconds: 500), () {});
+                        
+                     // await Future.delayed(const Duration(milliseconds: 500), () {});
                      
                     }
                     ,
