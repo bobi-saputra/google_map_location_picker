@@ -266,7 +266,9 @@ class MapPickerState extends State<MapPicker> {
                           address: _address,
                           placeId: _placeId,
                           );
-                          Navigator.pop(context);
+                          Navigator.pop(context, {
+                              'location': rest
+                              });
                        /* await  Future.delayed(Duration.zero,(){
                             Navigator.of(context).pop(
                               {
