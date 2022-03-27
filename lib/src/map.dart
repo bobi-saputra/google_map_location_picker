@@ -183,12 +183,12 @@ class MapPickerState extends State<MapPicker> {
               _lastMapPosition = position.target;
             },
             onCameraIdle: () async {
-               print("onCameraIdle#_lastMapPosition = $_lastMapPosition");
+              // print("onCameraIdle#_lastMapPosition = $_lastMapPosition");
               LocationProvider.of(context, listen: false)
                   .setLastIdleLocation(_lastMapPosition);
             },
             onCameraMoveStarted: () {
-              print("onCameraMoveStarted#_lastMapPosition = $_lastMapPosition");
+             // print("onCameraMoveStarted#_lastMapPosition = $_lastMapPosition");
             },
 //            onTap: (latLng) {
 //              clearOverlay();
@@ -252,7 +252,7 @@ class MapPickerState extends State<MapPicker> {
                     
                     onPressed: () async{
                        Future.delayed(const Duration(milliseconds: 500), () {});
-                       Navigator.of(context).maybePop(
+                      await Navigator.of(context).maybePop(
                         {
                           'location': LocationResult(
                           latLng: locationProvider.lastIdleLocation,
