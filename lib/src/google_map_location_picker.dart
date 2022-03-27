@@ -489,29 +489,9 @@ Future<LocationResult?> showLocationPicker(
   String language = 'en',
   LocationAccuracy desiredAccuracy = LocationAccuracy.best,
 }) async {
-final results=await  Navigator.push(context, MaterialPageRoute(builder: (context)=>LocationPicker(
-          apiKey,
-          initialCenter: initialCenter,
-          initialZoom: initialZoom,
-          requiredGPS: requiredGPS,
-          myLocationButtonEnabled: myLocationButtonEnabled,
-          layersButtonEnabled: layersButtonEnabled,
-          automaticallyAnimateToCurrentLocation:
-          automaticallyAnimateToCurrentLocation,
-          mapStylePath: mapStylePath,
-          appBarColor: appBarColor,
-          hintText: hintText,
-          searchBarBoxDecoration: searchBarBoxDecoration,
-          resultCardConfirmIcon: resultCardConfirmIcon,
-          resultCardAlignment: resultCardAlignment as Alignment?,
-          resultCardPadding: resultCardPadding as EdgeInsets?,
-          resultCardDecoration: resultCardDecoration,
-          countries: countries,
-          language: language,
-          desiredAccuracy: desiredAccuracy,
-        )));
- /* final results = await Navigator.of(context).push(
+  final results = await Navigator.of(context).push(
     MaterialPageRoute<dynamic>(
+       settings: RouteSettings(name: "/PickLoc"),
       builder: (BuildContext context) {
         // print('[LocationPicker] [countries] ${countries.join(', ')}');
         return LocationPicker(
@@ -537,7 +517,7 @@ final results=await  Navigator.push(context, MaterialPageRoute(builder: (context
         );
       },
     ),
-  );*/
+  );
 
   if (results != null && results.containsKey('location')) {
     return results['location'];
