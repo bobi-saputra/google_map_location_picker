@@ -266,10 +266,12 @@ class MapPickerState extends State<MapPicker> {
                           address: _address,
                           placeId: _placeId,
                           );
-                          Navigator.pop(context, {
+                          
+                          Navigator.pop(context);
+                          /*Navigator.pop(context, {
                               'location': rest
                               }
-                              );
+                              );*/
                          /* Navigator.popAndPushNamed(context, {
                               'location': rest
                               });*/
