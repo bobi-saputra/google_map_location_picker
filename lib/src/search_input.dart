@@ -95,7 +95,7 @@ class SearchInputState extends State<SearchInput> {
                   onTap: () {
                     editController.clear();
                     setState(() {
-                      hasSearchEntry = true;
+                      hasSearchEntry = false;
                     });
                   },
                 )
