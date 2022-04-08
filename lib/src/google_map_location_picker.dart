@@ -489,7 +489,7 @@ Future<LocationResult?> showLocationPicker(
   String language = 'en',
   LocationAccuracy desiredAccuracy = LocationAccuracy.best,
 }) async {
-  final results = await Navigator.of(context).push(
+  final results = await Navigator.of(context,rootNavigator: false).push(
     MaterialPageRoute<dynamic>(
      
       builder: (BuildContext context) {
