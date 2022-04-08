@@ -37,8 +37,8 @@ class SearchInputState extends State<SearchInput> {
 
   @override
   void dispose() {
-   // editController.removeListener(onSearchInputChange);
-   // editController.dispose();
+    editController.removeListener(onSearchInputChange);
+    editController.dispose();
 
     super.dispose();
   }
@@ -93,7 +93,7 @@ class SearchInputState extends State<SearchInput> {
               ? GestureDetector(
                   child: Icon(Icons.clear),
                   onTap: () {
-                    editController.clear();
+                   // editController.clear();
                     setState(() {
                       hasSearchEntry = false;
                     });
