@@ -37,8 +37,8 @@ class SearchInputState extends State<SearchInput> {
 
   @override
   void dispose() {
-    editController.removeListener(onSearchInputChange);
-    editController.dispose();
+   // editController.removeListener(onSearchInputChange);
+   // editController.dispose();
 
     super.dispose();
   }
