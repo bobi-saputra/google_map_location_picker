@@ -93,9 +93,9 @@ class SearchInputState extends State<SearchInput> {
               ? GestureDetector(
                   child: Icon(Icons.clear),
                   onTap: () {
-                   // editController.clear();
+                    editController.clear();
                     setState(() {
-                      hasSearchEntry = false;
+                      hasSearchEntry = true;
                     });
                   },
                 )
